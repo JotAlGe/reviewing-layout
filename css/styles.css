@@ -1,0 +1,213 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+:root{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+html{
+    scroll-behavior: smooth;
+}
+.burger{
+    display: none;
+}
+main{
+    max-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.profile{
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    border-right: 1em solid white;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
+}
+.profile__header{
+    width: 100%;
+    height: 50%;
+    
+}
+.profile__figure{
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    /* clip-path: circle(30% at 50% 50%); */
+    border-bottom: 1px solid rgba(115, 95, 95, .4);
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.profile__name{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #735F5F;
+}
+.profile__job{
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #f08080;
+}
+/* ================================================================== */
+/* --------------- nav --------------------------------- */
+nav{
+    flex: 1 1 auto;
+    display:  flex;
+    justify-content: center;
+}
+.list{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    margin: 0;
+    padding: 0;
+}
+.list__item{
+    width: 100%;
+    text-align: center;
+    display: grid;
+    place-items: center;
+}
+.list__item:hover > .list__link{
+    background-color: #f08080;
+    color: #f9f9f9
+}
+.list__link{
+    text-decoration: none;
+    color: #735F5F;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: grid;
+    place-items: center;
+}
+/* ======================== content =================================== */
+.content{
+    display: grid;
+    place-items: center;
+    background-color: #f9f9f9;
+    padding: 5%;
+    overflow-y: auto;
+}
+.content__text{
+    width: 100%;
+    min-height: 100vh;
+    border-bottom: 1px solid rgba(115, 95, 95, .4);
+}
+.content__header{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: #735F5F;
+}
+p{
+    font-family: 'Roboto', sans-serif;
+    color: #f08080;
+    line-height: 2rem;
+}
+
+/* ================== media quieries ======================= */
+@media screen and (max-width: 900px){
+    main{
+        grid-template-columns: 1fr;
+    }
+    .burger{
+        width: 100vw;
+        height: 10vh;
+        background-color: #f08080;
+        display: flex;
+    }
+    .profile{
+        display: none;
+    }
+    
+    /* menu */
+    .list{
+        list-style: none;
+    }
+    .nav-hidden{
+        max-width: 100%;
+        height: 100vh;
+        margin-left: -50px;
+        padding: 0;
+        z-index: 100;
+        transform: translateY(100px);
+        background-color: rgba(0, 0, 0, .7);
+    }
+    .list__link--color{
+        color: #f08080;
+    }
+    /* but burger */
+    .burger__button{
+        width: 50px;
+        height: 50px;
+        position: relative;    
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .burger__button > span{
+        position: absolute;
+        background-color: #735F5F;
+        width: 100%;
+        height: 10px;
+        border-radius: 1em;
+        transition: all .5s ease;
+    }
+    .burger__button > span:nth-child(1){
+        top: 0;
+    }
+    .burger__button > span:nth-child(2){
+        top: 20px;
+    }
+    .burger__button > span:nth-child(3){
+        bottom: 0;
+    }
+/* ===== class but burger ========= */
+    .active_positive{
+        transform:  rotate(45deg) scaleX(2.5);
+        left:  -20px;
+    }
+
+    .active_negative{
+        left:  -20px;
+        transform:  rotate(-45deg) scaleX(2.5);
+    }
+    .opacity{
+        opacity:  0;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .content__header > h2{
+        font-size: 1.5rem;
+    }
+    .content__text p{
+        line-height: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .content__header > h2{
+        font-size: 1.2rem;
+    }
+    .content__text p{
+        line-height: 1.3rem;
+    }
+}
